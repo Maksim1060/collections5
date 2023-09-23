@@ -47,4 +47,5 @@ public class Employee {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+    public String getFullName(){return firstName+" " + lstName;}
 }
