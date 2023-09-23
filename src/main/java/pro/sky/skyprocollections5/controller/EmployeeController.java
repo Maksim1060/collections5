@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/")
 
 public class EmployeeController {
     private final EmployeeService service;
