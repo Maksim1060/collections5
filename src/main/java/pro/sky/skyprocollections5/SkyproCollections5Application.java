@@ -10,4 +10,5 @@ public class  SkyproCollections5Application {
 		SpringApplication.run(SkyproCollections5Application.class, args);
 	}
 
+	
 }
