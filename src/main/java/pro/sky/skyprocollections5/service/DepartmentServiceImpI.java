@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.groupingBy;
 
 @Service
-public class DepartmentServiceImpI implements DepartmentService{
+public class DepartmentServiceImpI implements DepartmentService {
     private final EmployeeService employeeService;
 
     public DepartmentServiceImpI(EmployeeService employeeService) {
@@ -22,23 +22,23 @@ public class DepartmentServiceImpI implements DepartmentService{
 
     @Override
     public Employee getEmployeeWithMaxSalary(Integer departmentId) {
-        return employeeService.findAll().stream().filter(e-> e.getDepartment()==departmentId).max(Comparator.comparingInt(Employee::getSalary))
-                .orElseThrow(()-> new  EmployeeNotFoundException ("Employee not found"));
+        return employeeService.findAll().stream().filter(e -> e.getDepartment() == departmentId).max(Comparator.comparingInt(Employee::getSalary))
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found"));
     }
 
     @Override
     public Employee getEmployeeWithMinSalary(Integer departmentId) {
-        return employeeService.findAll().stream().filter(e-> e.getDepartment()==departmentId).min(Comparator.comparingInt(Employee::getSalary))
-                .orElseThrow(()-> new  EmployeeNotFoundException ("Employee not found"));
+        return employeeService.findAll().stream().filter(e -> e.getDepartment() == departmentId).min(Comparator.comparingInt(Employee::getSalary))
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found"));
     }
 
     @Override
-    public Collection<Employee> getEmployee(Integer departmentId) {
-        return employeeService.findAll().stream().filter(e->e.getDepartment()==departmentId).collect(Collectors.toList());
+    public Collection<Employee> getEmployeeByDepartment(Integer departmentId) {
+        return employeeService.findAll().stream().filter(e -> e.getDepartment() == departmentId).collect(Collectors.toList());
     }
 
     @Override
-    public Map<Integer, List<Employee>> getEmployee() {
+    public Map<Integer, List<Employee>> getEmployeeByDepartment() {
         return employeeService.findAll().stream().collect(Collectors.groupingBy(Employee::getDepartment));
     }
 }

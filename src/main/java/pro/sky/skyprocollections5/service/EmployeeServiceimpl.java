@@ -19,11 +19,11 @@ public class EmployeeServiceimpl implements EmployeeService {
     }
 
     @Override
-    public Employee add(String firstName, String lastName,int salary,int department) {
+    public Employee add(String firstName, String lastName, int salary, int department) {
         firstName = StringUtils.capitalize(firstName);
         lastName = StringUtils.capitalize(lastName);
-        valideteFirstLastNames(firstName,lastName);
-        Employee employee = new Employee(firstName, lastName,salary,department);
+        valideteFirstLastNames(firstName, lastName);
+        Employee employee = new Employee(firstName, lastName, salary, department);
         if (empolyees.containsKey(employee.getFullName()))
             throw new EmployeeAlreadyAddedException();
         {
@@ -37,8 +37,8 @@ public class EmployeeServiceimpl implements EmployeeService {
     public Employee remove(String firstName, String lastName) {
         firstName = StringUtils.capitalize(firstName);
         lastName = StringUtils.capitalize(lastName);
-        valideteFirstLastNames(firstName,lastName);
-        Employee employee =new Employee(firstName, lastName);
+        valideteFirstLastNames(firstName, lastName);
+        Employee employee = new Employee(firstName, lastName);
         if (empolyees.containsKey(employee.getFullName())) {
             return empolyees.get(employee.getFullName());
         }
@@ -51,18 +51,19 @@ public class EmployeeServiceimpl implements EmployeeService {
     public Employee find(String firstName, String lastName) {
         firstName = StringUtils.capitalize(firstName);
         lastName = StringUtils.capitalize(lastName);
-        valideteFirstLastNames(firstName,lastName);
+        valideteFirstLastNames(firstName, lastName);
 
         Employee employee = new Employee(firstName, lastName);
         if (empolyees.containsKey(employee.getFullName())) {
             return empolyees.get(employee.getFullName());
-        }throw new EmployeeNotFoundException();
+        }
+        throw new EmployeeNotFoundException();
     }
 
     @Override
     public Collection<Employee> findAll() {
-            return Collections.unmodifiableCollection(empolyees.values());
-        }
+        return Collections.unmodifiableCollection(empolyees.values());
+    }
 
     private void valideteFirstLastNames(String firstName, String lastName) {
         if (StringUtils.isNumeric(firstName)) {
@@ -74,7 +75,7 @@ public class EmployeeServiceimpl implements EmployeeService {
 
     }
 
-    }
+}
 
 
 

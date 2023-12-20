@@ -8,7 +8,6 @@ import pro.sky.skyprocollections5.model.Employee;
 import pro.sky.skyprocollections5.service.DepartmentService;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -29,10 +28,10 @@ public class DepartmentController {
     }
 @GetMapping(value = "/all",params = {"departmentId"})
     public Collection<Employee> gerEmployees(@RequestParam Integer departmentId) {
-        return departmentService.getEmployee(departmentId);
+        return departmentService.getEmployeeByDepartment(departmentId);
     }
     @GetMapping("/all")
     public Map<Integer, List<Employee>> getEmployees() {
-        return departmentService.getEmployee();
+        return departmentService.getEmployeeByDepartment();
     }
 }
